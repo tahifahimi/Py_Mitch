@@ -1,9 +1,6 @@
 from seleniumwire import webdriver
 from urllib.parse import urlparse
 
-
-
-
 class Py_Mitch:
 
     def __init__(self, browser_is="chrome"):
@@ -23,11 +20,43 @@ class Py_Mitch:
         self.collected_total_request = 0
 
 
-    def goodUrl(self, request_url, current_url):
-        return True
+    def goodUrl(self, current_url, request_url):
+        u = urlparse(request_url)
+        s = urlparse(current_url)
+        isGood = True
+        if not u.scheme.startswith('http'):
+            isGood = False
+        if u.path.endswith('/chrome/newtab'):
+            isGood = False
+        # check that current url is a sub domain of the main domain
+        # check domain is equal to hostname ????..............................
+        if not u.hostname.find(s.hostname):
+            isGood = False
 
-    def isKnown(self, req, active):
-        return True
+        return isGood
+
+    def sameParams(self, a, b):
+        flag = True
+        if len(a.keys()) != len(b.keys()):
+            flag = False
+        else:
+            for k in a.keys():
+                if k not in b.keys():
+                    flag = False
+        return flag
+
+    def compareReq(self, a, b):
+        return a['method'] == b['method'] and a['url'] == b['url'] and self.sameParams(a, b)
+
+    def isKnown(self, r, gs):
+        flag = False
+        if not gs:
+            return flag
+
+        for g in gs:
+            if self.compareReq(g, r):
+                flag = True
+        return flag
 
     def parseParams(self, param):
         p = {}
@@ -42,7 +71,7 @@ class Py_Mitch:
 
         for request in self.driver.requests:
             req = {}
-            if self.goodUrl(request.url, self.driver.current_url):
+            if self.goodUrl(self.driver.current_url, request.url):
                 req['method'] = request.method
                 o = urlparse(request.url)
                 req['url'] = o.scheme + "//" + o.hostname + "//" + o.path
@@ -81,7 +110,6 @@ class Py_Mitch:
         for req in self.driver.requests[:]:
             for req in self.driver.requests[:]:
                 self.driver.requests.remove(req)
-
 
 
 
