@@ -1,0 +1,20 @@
+1617544079751	geckodriver	INFO	Listening on 127.0.0.1:50088
+1617544082713	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileu7JtLP"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1617544103784	Marionette	INFO	Listening on port 50098
+1617544104618	Marionette	WARN	TLS certificate errors will be ignored for this session
+1617544104622	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:50087","noProxy":[],"sslProxy":"127.0.0.1:50087"}
+1617544169973	Marionette	INFO	Stopped listening on port 50098
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1617544247462	geckodriver	INFO	Listening on 127.0.0.1:50720
+1617544250508	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofilegLi00h"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1617544255967	Marionette	INFO	Listening on port 50728
+1617544256033	Marionette	WARN	TLS certificate errors will be ignored for this session
+1617544256038	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:50719","noProxy":[],"sslProxy":"127.0.0.1:50719"}
+1617544279275	Marionette	INFO	Stopped listening on port 50728
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
