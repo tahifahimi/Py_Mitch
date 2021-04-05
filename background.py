@@ -1,5 +1,9 @@
+
 from seleniumwire import webdriver
 from urllib.parse import urlparse
+
+# inner imports :
+from sensitivity import *
 
 class Py_Mitch:
 
@@ -11,7 +15,8 @@ class Py_Mitch:
         else:
             self.driver = webdriver.Safari()
 
-        self.requested_url = []
+        self.requested_url = "https://darmankade.com"
+
         self.active_collector = []
         self.sensitive_requests = []
         self.candidates = []
@@ -19,20 +24,22 @@ class Py_Mitch:
         self.collected_sensitive_requests = 0
         self.collected_total_request = 0
 
+    def call_url(self):
+        self.driver.get(self.requested_url)
 
     def goodUrl(self, current_url, request_url):
-        u = urlparse(request_url)
-        s = urlparse(current_url)
+        s = urlparse(request_url)
+        u = urlparse(current_url)
         isGood = True
         if not u.scheme.startswith('http'):
             isGood = False
         if u.path.endswith('/chrome/newtab'):
             isGood = False
-        # check that current url is a sub domain of the main domain
-        # check domain is equal to hostname ????..............................
-        if not u.hostname.find(s.hostname):
+        if not u.hostname.find(s.hostname) != -1:
             isGood = False
-
+        # maybe we should remove requests of loading elements of the page.....................................
+        if current_url.find('nuxt') != -1 or u.path.endswith('.js') or u.path.endswith('.json') or u.path.endswith('.css') or u.path.endswith('.png') or u.path.endswith('ttf') or u.path.endswith('.ico') or u.path.endswith('woff'):
+            isGood = False
         return isGood
 
     def sameParams(self, a, b):
@@ -51,7 +58,7 @@ class Py_Mitch:
     def isKnown(self, r, gs):
         flag = False
         if not gs:
-            return flag
+            flag = True
 
         for g in gs:
             if self.compareReq(g, r):
@@ -64,19 +71,22 @@ class Py_Mitch:
             p[k] = p.get(k)
         return p
 
-    def isSensitive(self, req):
-        pass
 
     def on_requests(self):
 
         for request in self.driver.requests:
             req = {}
-            if self.goodUrl(self.driver.current_url, request.url):
+            # visiting url is the url of the main frame from the browser
+            if self.goodUrl(request.url, self.driver.current_url):
                 req['method'] = request.method
                 o = urlparse(request.url)
                 req['url'] = o.scheme + "//" + o.hostname + "//" + o.path
                 req['reqId'] = request.id
-                req['response'] = {'body': request.response.body.decode('utf-8')}
+                req['response'] = {}
+                try:
+                    req['response']['body'] = request.response.body.decode('utf-8')
+                except:
+                    print("except in body decoding")
                 req['params'] = self.parseParams(o._asdict())
 
                 if request.method == "POST":
@@ -87,7 +97,7 @@ class Py_Mitch:
                 print("req is: ", req)
 
                 # check this functions and inputs ...............................................
-                if self.isSensitive(req) and (not self.isKnown(req, self.active_collector)):
+                if isSensitive(req) and (not self.isKnown(req, self.active_collector)):
                     # add code line 179 to 185
                     req['response']['status'] = request.response.status_code
                     if request.response.headers:
@@ -111,7 +121,16 @@ class Py_Mitch:
             for req in self.driver.requests[:]:
                 self.driver.requests.remove(req)
 
-
+import time
+if __name__ == "__main__":
+    mitch = Py_Mitch()
+    print("mitch created")
+    mitch.call_url()
+    print("called")
+    time.sleep(5)
+    mitch.on_requests()
+    print("end of requests")
+    print(mitch.collected_total_request, "    ", mitch.collected_sensitive_requests)
 
 # another way
 # url = "https://github.com"
