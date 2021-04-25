@@ -18,3 +18,180 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1618680588707	geckodriver	INFO	Listening on 127.0.0.1:55009
+1618680604795	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileI1rWZE"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618680626369	Marionette	INFO	Listening on port 55018
+1618680626871	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618680626884	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55008","noProxy":[],"sslProxy":"127.0.0.1:55008"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"CrashMonitor: Writing notifications to file after receiving profile-before-change","state":"(none)","filename":"resource://gre/modules/CrashMonitor.jsm","lineNumber":176,"stack":["resource://gre/modules/CrashMonitor.jsm:init:176","resource://gre/modules/nsCrashMonitor.jsm:observe:19"]}] Barrier: OS.File: Waiting for clients before profileBeforeChange
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"OS.File: flush I/O queued before profileBeforeChange","state":{"launched":true,"shutdown":false,"worker":true,"pendingReset":false,"latestSent":["Sat Apr 17 2021 22:09:51 GMT+0430 (Iran Daylight Time)","writeAtomic"],"latestReceived":["Sat Apr 17 2021 22:09:51 GMT+0430 (Iran Daylight Time)",2716],"messagesSent":92,"messagesReceived":92,"messagesQueued":92,"DEBUG":false,"clients":[{"name":"CrashMonitor: Writing notifications to file after receiving profile-before-change","state":"(none)","filename":"resource://gre/modules/CrashMonitor.jsm","lineNumber":176,"stack":["resource://gre/modules/CrashMonitor.jsm:init:176","resource://gre/modules/nsCrashMonitor.jsm:observe:19"]}]},"filename":"resource://gre/modules/osfile/osfile_async_front.jsm","lineNumber":1658,"stack":["resource://gre/modules/osfile/osfile_async_front.jsm:setupShutdown:1658","resource://gre/modules/osfile/osfile_async_front.jsm:null:1678","resource://gre/modules/osfile.jsm:null:11","resource://gre/modules/UpdateUtils.jsm:null:17","resource://gre/modules/GMPUtils.jsm:null:19","resource://gre/modules/addons/GMPProvider.jsm:null:19","resource://gre/modules/AddonManager.jsm:startup:789","resource://gre/modules/AddonManager.jsm:startup:3525","resource://gre/modules/addonManager.js:observe:87"]},{"name":"AddonManager: shutting down.","state":[{"name":"AddonManager: Waiting to start provider shutdown.","state":"Complete"},{"name":"AddonManager: Waiting for providers to shut down.","state":[{"name":"XPIProvider","state":"(none)","filename":"resource://gre/modules/AddonManager.jsm","lineNumber":635,"stack":["resource://gre/modules/AddonManager.jsm:_startProvider:635","resource://gre/modules/AddonManager.jsm:startup:825","resource://gre/modules/AddonManager.jsm:startup:3525","resource://gre/modules/addonManager.js:observe:87"]}]},{"name":"AddonRepository: async shutdown","state":"pending"}],"filename":"resource://gre/modules/AddonManager.jsm","lineNumber":815,"stack":["resource://gre/modules/AddonManager.jsm:startup:815","resource://gre/modules/AddonManager.jsm:startup:3525","resource://gre/modules/addonManager.js:observe:87"]},{"name":"Places Connection shutdown","state":{"PlacesShutdownProgress":5},"filename":"/builds/worker/checkouts/gecko/toolkit/components/places/Database.cpp","lineNumber":467,"stack":["resource://gre/modules/nsAsyncShutdown.jsm:addBlocker:162","resource://gre/modules/XPCOMUtils.jsm:XPCU_serviceLambda:144","resource://gre/modules/XPCOMUtils.jsm:get:58","resource:///modules/BrowserGlue.jsm:BG__onFirstWindowLoaded:1881","resource:///modules/BrowserGlue.jsm:BG_observe:1012","chrome://browser/content/browser.js:_delayedStartup:2191"]}] Barrier: profile-before-change
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"XPIProvider","state":"(none)","filename":"resource://gre/modules/AddonManager.jsm","lineNumber":635,"stack":["resource://gre/modules/AddonManager.jsm:_startProvider:635","resource://gre/modules/AddonManager.jsm:startup:825","resource://gre/modules/AddonManager.jsm:startup:3525","resource://gre/modules/addonManager.js:observe:87"]}] Barrier: AddonManager: Waiting for providers to shut down.
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: uncaught exception: Object
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: uncaught exception: Object
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: uncaught exception: Object
+1618681193174	Marionette	INFO	Stopped listening on port 55018
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618681310652	geckodriver	INFO	Listening on 127.0.0.1:55375
+1618681313674	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofilefBd7tN"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618681323705	Marionette	INFO	Listening on port 55383
+1618681324151	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618681324163	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55374","noProxy":[],"sslProxy":"127.0.0.1:55374"}
+[Parent 4636, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1618681439979	Marionette	INFO	Stopped listening on port 55383
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618681448231	geckodriver	INFO	Listening on 127.0.0.1:55465
+1618681451261	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofile0eGVVy"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618681461233	Marionette	INFO	Listening on port 55474
+1618681461752	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618681461760	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55464","noProxy":[],"sslProxy":"127.0.0.1:55464"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+1618681557724	Marionette	INFO	Stopped listening on port 55474
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618681631726	geckodriver	INFO	Listening on 127.0.0.1:55665
+1618681634820	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileTBOO1x"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618681644529	Marionette	INFO	Listening on port 55674
+1618681644740	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618681644748	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55664","noProxy":[],"sslProxy":"127.0.0.1:55664"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+1618681798209	Marionette	INFO	Stopped listening on port 55674
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618681813098	geckodriver	INFO	Listening on 127.0.0.1:55866
+1618681816127	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileMVWGPB"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618681825499	Marionette	INFO	Listening on port 55874
+1618681826018	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618681826027	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55865","noProxy":[],"sslProxy":"127.0.0.1:55865"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1618692307270	Marionette	INFO	Stopped listening on port 55874
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x5F0005,name=PImageBridge::Msg_WillClose) Channel error: cannot send/recv
+
+arn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618682679210	Marionette	INFO	Listening on port 56177
+1618682679581	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618682679595	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:56168","noProxy":[],"sslProxy":"127.0.0.1:56168"}
+JavaScript error: https://cdn.goftino.com/static/user.js?v=48, line 1: ReferenceError: $ is not defined
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1618741847724	geckodriver	INFO	Listening on 127.0.0.1:60708
+1618741850740	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileSrGTL4"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618741865889	Marionette	INFO	Listening on port 60717
+1618741866222	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618741866251	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:60707","noProxy":[],"sslProxy":"127.0.0.1:60707"}
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1618936120372	geckodriver	INFO	Listening on 127.0.0.1:52432
+1618936123493	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileKGzakF"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+1618936142785	Marionette	INFO	Listening on port 52440
+1618936143477	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618936143485	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:52431","noProxy":[],"sslProxy":"127.0.0.1:52431"}
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: $ is not defined
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1618936673431	Marionette	INFO	Stopped listening on port 52440
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618940088609	geckodriver	INFO	Listening on 127.0.0.1:53131
+1618940091728	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofilege1MCT"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+console.error: Region.jsm: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 770))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1618940115306	Marionette	INFO	Listening on port 53139
+1618940115538	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618940115564	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:53130","noProxy":[],"sslProxy":"127.0.0.1:53130"}
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: $ is not defined
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: $ is not defined
+1618940392225	Marionette	INFO	Stopped listening on port 53139
+[Parent 5456, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618940547809	geckodriver	INFO	Listening on 127.0.0.1:53411
+1618940550844	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileMhxJzc"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618940560653	Marionette	INFO	Listening on port 53419
+1618940560930	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618940560939	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:53410","noProxy":[],"sslProxy":"127.0.0.1:53410"}
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1618941830511	Marionette	INFO	Stopped listening on port 53419
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618941858234	geckodriver	INFO	Listening on 127.0.0.1:53665
+1618941861305	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileazo1dO"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618941872104	Marionette	INFO	Listening on port 53673
+1618941872317	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618941872331	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:53664","noProxy":[],"sslProxy":"127.0.0.1:53664"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: $ is not defined
+1618942080182	Marionette	INFO	Stopped listening on port 53673
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618942091267	geckodriver	INFO	Listening on 127.0.0.1:53882
+1618942094422	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileOtK8Gx"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618942105461	Marionette	INFO	Listening on port 53890
+1618942105818	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618942105833	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:53881","noProxy":[],"sslProxy":"127.0.0.1:53881"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: io is not defined
+1618942362545	Marionette	INFO	Stopped listening on port 53890
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618942609867	geckodriver	INFO	Listening on 127.0.0.1:54250
+1618942612934	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofileRyz2Jf"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618942623531	Marionette	INFO	Listening on port 54258
+1618942623969	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618942623978	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54249","noProxy":[],"sslProxy":"127.0.0.1:54249"}
+1618942784883	Marionette	INFO	Stopped listening on port 54258
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1618943005245	geckodriver	INFO	Listening on 127.0.0.1:54524
+1618943008329	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Fahimi\\AppData\\Local\\Temp\\rust_mozprofilejr1qw1"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1618943018793	Marionette	INFO	Listening on port 54532
+1618943019318	Marionette	WARN	TLS certificate errors will be ignored for this session
+1618943019330	Marionette	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54523","noProxy":[],"sslProxy":"127.0.0.1:54523"}
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: $ is not defined
+JavaScript error: https://cdn.goftino.com/static/user.js?v=49, line 1: ReferenceError: $ is not defined
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.

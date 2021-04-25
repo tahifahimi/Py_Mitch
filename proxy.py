@@ -34,7 +34,7 @@ def goodUrl(current_url, request_url):
     if not u.hostname.find(s.hostname) != -1:
         isGood = False
     # maybe we should remove requests of loading elements of the page.....................................
-    if current_url.find('nuxt') != -1 or u.path.endswith('.js') or u.path.endswith('.css') or u.path.endswith(
+    if current_url.find('nuxt') != -1 or u.path.endswith('.json') or u.path.endswith('.js') or u.path.endswith('.css') or u.path.endswith(
             '.png') or u.path.endswith('ttf') or u.path.endswith('.ico') or u.path.endswith('woff'):
         isGood = False
     return isGood
