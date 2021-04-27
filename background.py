@@ -101,7 +101,7 @@ class Py_Mitch:
             if isMainFrame and self.goodUrl(request.url, self.main_domain):
                 req['method'] = request.method
                 o = urlparse(request.url)
-                req['url'] = o.scheme + "//" + o.hostname + "//" + o.path
+                req['url'] = o.scheme + "://" + o.hostname + "//" + o.path
                 req['reqId'] = request.id
                 req['response'] = {}
                 # trying to take the body --> taking body from the driver
@@ -110,8 +110,7 @@ class Py_Mitch:
                     # req['response']['body'] = request.response.body.decode('utf-8')
                 except:
                     print("except in body decoding")
-                # req['params'] = self.parseParams(o._asdict())
-                req['params'] = request.params
+                req['params'] = self.parseParams(o._asdict())
                 if request.method == "POST":
                     if request.body.decode('utf-8') != '':
                         postBody = {}
@@ -152,6 +151,7 @@ class Py_Mitch:
                         print("here we have trouble : ", sensitivity)
 
                 if sen and (not self.isKnown(req, arr)):
+                    req['headers'] = request.headers
                     self.main_sensitive_req.append(request)
                     # add code line 179 to 185
                     req['response']['status'] = request.response.status_code
@@ -184,7 +184,7 @@ class Py_Mitch:
         # self.active_collector = self.sensitive_requests
         del self.driver.requests
         self.phase = 0
-        self.call_url(["http://appeto.ir/platform#/host"], self.sensitive_requests)
+        self.call_url(["http://appeto.ir/platform#/account", "http://appeto.ir/platform#/host"], self.sensitive_requests)
         print("alice sensitive requests are : ", self.sensitive_requests)
         self.lock.release()
 
@@ -208,8 +208,8 @@ class Py_Mitch:
         print("Logged in as Bob, testing sensitive requests...")
         del self.driver.requests
         # self.active_collector = self.bob_requests
-        # self.replayRequests()
-        self.call_url(["http://appeto.ir/platform#/host"], self.bob_requests)
+        # self.replayRequests(self.bob_requests)
+        self.call_url(["http://appeto.ir/platform#/account", "http://appeto.ir/platform#/host"], self.bob_requests)
         print("bob requests are: ", self.bob_requests)
         print("...please logout from Bob's account and notify the extension")
         input()
@@ -227,8 +227,8 @@ class Py_Mitch:
         self.lock.acquire()
         del self.driver.requests
         # self.active_collector = self.alice1_requests
-        # self.replayRequests()
-        self.call_url(["http://appeto.ir/platform#/host"], self.alice1_requests)
+        # self.replayRequests(self.alice1_requests)
+        self.call_url(["http://appeto.ir/platform#/account", "http://appeto.ir/platform#/host"], self.alice1_requests)
         print("...please logout from Alice's account and notify the extension")
         input()
         self.phase = 5
@@ -239,8 +239,8 @@ class Py_Mitch:
         self.lock.acquire()
         # self.active_collector = self.unauth_requests
         del self.driver.requests
-        self.call_url(["http://appeto.ir/platform#/host"], self.unauth_requests)
-        # self.replayRequests()
+        # self.call_url([r.url for r in self.main_sensitive_req], self.unauth_requests)
+        self.replayRequests(self.unauth_requests)
         print("all data collected")
         self.phase = 6
         self.lock.release()
@@ -262,6 +262,61 @@ class Py_Mitch:
         print("size of the arrays: alice1, bob, alice2, unauth")
         print(len(self.sensitive_requests), "    ", len(self.bob_requests), "     ", len(self.alice1_requests),
               "           ", len(self.unauth_requests))
+
+    def replayRequests(self, unauth_requests):
+        import requests
+        session = requests.Session()
+        for r in self.main_sensitive_req:
+            req = {}
+            req['method'] = r.method
+            o = urlparse(r.url)
+            req['url'] = o.scheme + "://" + o.hostname + "//" + o.path
+            req['reqId'] = r.id
+            req['params'] = r.params
+            if r.method.upper() == "POST":
+                if r.body.decode('utf-8') != '':
+                    postBody = {}
+                    data = r.body.decode('utf-8')
+                    if data.startswith("{"):
+                        data = data.replace('{', '')
+                        data = data.replace('}', '')
+                        data = data.split(',')
+                        for d in data:
+                            k, v = d.split(':')
+                            postBody[k[0].replace('\'', '')] = v[0].replace('\'', '')
+                    else:
+                        # check this part .................????????????????/
+                        print("data is : ", data)
+                        data = data.replace("%5B", '[')
+                        data = data.replace("%5D", ']')
+                        temp = data.split("&")
+                        for t in temp:
+                            d = t.split("=")
+                            postBody[d[0]] = [d[1]]
+                    for k in postBody.keys():
+                        req['params'][k] = postBody[k]
+            if r.method.upper() == "POST":
+                res = session.request(method=r.method, url=r.url, params=r.body, headers={"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"})
+                # session.request(method=r.method, url=r.url, data=data.encode("utf-8"),
+                #                 headers={"Content-Type": "application/json; charset=UTF-8"})
+                # session.request(method=r.method, url=r.url, data=json.dumps(postBody),
+                #                 headers={"Content-Type": "application/json; charset=UTF-8"})
+
+            else:
+                res = session.po
+            # res = session.get(r['url'], data=r['params'], headers=r['headers'])
+            req['response'] = {}
+            req['response']['body'] = res.text
+
+            req['response']['status'] = res.status_code
+            if res.headers is not None:
+                headers = {}
+                for k in res.headers.keys():
+                    headers[k] = res.headers[k]
+                if headers != {}:
+                    req['response']['headers'] = headers
+
+            unauth_requests.append(req)
 
 
 if __name__ == "__main__":

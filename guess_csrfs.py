@@ -149,7 +149,6 @@ def compare_sensitive_requests(runA, runB):
     
     return results
 
-
 def isSameEndPoint(base, test):
     if base['url'] != test['url']:
         return False
