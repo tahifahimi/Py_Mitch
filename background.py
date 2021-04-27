@@ -83,7 +83,8 @@ class Py_Mitch:
     def parseParams(self, param):
         p = {}
         for k in param.keys():
-            p[k] = p.get(k)
+            if p.get(k) is not None:
+                p[k] = p.get(k)
         return p
 
 
@@ -239,7 +240,6 @@ class Py_Mitch:
         self.lock.acquire()
         # self.active_collector = self.unauth_requests
         del self.driver.requests
-        # self.call_url([r.url for r in self.main_sensitive_req], self.unauth_requests)
         self.replayRequests(self.unauth_requests)
         print("all data collected")
         self.phase = 6
@@ -318,6 +318,8 @@ class Py_Mitch:
 
             unauth_requests.append(req)
 
+
+"""you can use the selenium requests instead of working with requests"""
 
 if __name__ == "__main__":
     url = "https://appeto.ir/login"
