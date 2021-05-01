@@ -27,6 +27,9 @@ class Py_Mitch:
         # self.requested_url = url
         self.lock = multiprocessing.Lock()
 
+        # urls that mitch search for vulnerabilities in them
+        self.search_urls = []
+
         self.active_collector = []
         self.alice1_requests = []
         self.sensitive_requests = []
@@ -97,7 +100,7 @@ class Py_Mitch:
             if request.response is not None and request.response.headers['Content-Type'] is not None:
                 if 'html' in request.response.headers['Content-Type'] and self.main_domain in request.url:
                     isMainFrame = True
-                    print("we have a main frame in : ", request)
+                    # print("we have a main frame in : ", request)
 
             if isMainFrame and self.goodUrl(request.url, self.main_domain):
                 req['method'] = request.method
@@ -125,7 +128,7 @@ class Py_Mitch:
                                 postBody[k[0].replace('\'', '')] = v[0].replace('\'', '')
                         else:
                             # check this part .................????????????????/
-                            print("data is : ", data)
+                            # print("data is : ", data)
                             data = data.replace("%5B", '[')
                             data = data.replace("%5D", ']')
                             temp = data.split("&")
@@ -136,20 +139,20 @@ class Py_Mitch:
                             req['params'][k] = postBody[k]
                         # here remains --- line 140 to 160
 
-                print("req is: ", req)
+                # print("req is: ", req)
 
                 sen = False
                 sensitivity = isSensitive(req, self.classifier)
                 if isinstance(sensitivity, int):
                     if sensitivity == 1:
                         sen = True
-                        print("sensitive Request in : ", req['url'])
+                        # print("sensitive Request in : ", req['url'])
                 else:
                     if sensitivity != 'n':
                         sen = True
-                        print("sensitive Request in : ", req['url'])
-                    else:
-                        print("here we have trouble : ", sensitivity)
+                    #     print("sensitive Request in : ", req['url'])
+                    # else:
+                    #     print("here we have trouble : ", sensitivity)
 
                 if sen and (not self.isKnown(req, arr)):
                     req['headers'] = request.headers
@@ -164,7 +167,7 @@ class Py_Mitch:
                             req['response']['headers'] = headers
 
                     arr.append(req)
-                    print("sensitive request is added", req)
+                    # print("sensitive request is added", req)
                     self.collected_sensitive_requests += 1
                 # add to total requests
                 self.collected_total_request += 1
@@ -185,7 +188,7 @@ class Py_Mitch:
         # self.active_collector = self.sensitive_requests
         del self.driver.requests
         self.phase = 0
-        self.call_url(["http://appeto.ir/platform#/account", "http://appeto.ir/platform#/host"], self.sensitive_requests)
+        self.call_url(self.search_urls, self.sensitive_requests)
         print("alice sensitive requests are : ", self.sensitive_requests)
         self.lock.release()
 
@@ -210,7 +213,7 @@ class Py_Mitch:
         del self.driver.requests
         # self.active_collector = self.bob_requests
         # self.replayRequests(self.bob_requests)
-        self.call_url(["http://appeto.ir/platform#/account", "http://appeto.ir/platform#/host"], self.bob_requests)
+        self.call_url(self.search_urls, self.bob_requests)
         print("bob requests are: ", self.bob_requests)
         print("...please logout from Bob's account and notify the extension")
         input()
@@ -229,7 +232,7 @@ class Py_Mitch:
         del self.driver.requests
         # self.active_collector = self.alice1_requests
         # self.replayRequests(self.alice1_requests)
-        self.call_url(["http://appeto.ir/platform#/account", "http://appeto.ir/platform#/host"], self.alice1_requests)
+        self.call_url(self.search_urls, self.alice1_requests)
         print("...please logout from Alice's account and notify the extension")
         input()
         self.phase = 5
@@ -286,7 +289,7 @@ class Py_Mitch:
                             postBody[k[0].replace('\'', '')] = v[0].replace('\'', '')
                     else:
                         # check this part .................????????????????/
-                        print("data is : ", data)
+                        # print("data is : ", data)
                         data = data.replace("%5B", '[')
                         data = data.replace("%5D", ']')
                         temp = data.split("&")
@@ -322,9 +325,14 @@ class Py_Mitch:
 """you can use the selenium requests instead of working with requests"""
 
 if __name__ == "__main__":
-    url = "https://appeto.ir/login"
-    domain = "appeto.ir"
-    mitch = Py_Mitch("firefox", url, domain)
+    login_url = input("enter the login page of the website:")
+    domain = login_url.replace("https://", "")
+    domain = domain.replace("/login", "")
+
+    mitch = Py_Mitch("firefox", login_url, domain)
+    n = int(input("enter numbers of urls you wants to search in : "))
+    for i in range(n):
+        mitch.search_urls.append(input())
     print("mitch created")
 
     print("if you logged in print enter: ")

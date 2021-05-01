@@ -15,7 +15,7 @@ def reading_data(filename):
             if line_count == 0:
                 column_names = [a for a in row]
                 line_count += 1
-                print(column_names)
+                # print(column_names)
             else:
                 y.append(row[1])
                 # if row[1]=='n':
@@ -26,7 +26,7 @@ def reading_data(filename):
                 x.append([float(row[i]) for i in range(len(row)) if i != 1])
                 # x.append([row[i] for i in range(len(row)) if i != 1 or i!=0])
                 line_count += 1
-        print(f'Processed {line_count} lines.')
+        # print(f'Processed {line_count} lines.')
     return column_names, np.array(x), np.array(y)
 
 def create_model():

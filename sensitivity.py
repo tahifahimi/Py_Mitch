@@ -8,10 +8,10 @@ def countParams(req):
 def countBools(req):
     numberBools = 0
     for p in req['params'].keys():
-        print(req['params'][p])
+        # print(req['params'][p])
         if req['params'][p] == 'True' or req['params'][p] == 'False' or req['params'][p] == '1' or req['params'][p] == '0':
             numberBools += 1
-    print("number of bools are : ", numberBools)
+    # print("number of bools are : ", numberBools)
     return numberBools
 
 

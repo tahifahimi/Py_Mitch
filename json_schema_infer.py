@@ -32,7 +32,7 @@ def getProperties(j):
 def getSchema(json_object):
     schema = {}
 
-    print("!!!!!!!!!!!!!!!!!!!! getSchema in json_schema_infer is not completed.....")
+    # print("!!!!!!!!!!!!!!!!!!!! getSchema in json_schema_infer is not completed.....")
 
     schema['$schema'] = 'http://json-schema.org/schema#'
     schema['title'] = 'JSON inferred schema'
