@@ -10,6 +10,3 @@ After that just run the program with :
 ## Model 
 the model is available but if you want to create new Model, you might use the dataset from the article[[1]](#1).
 
-## References
-<a id="1">[1]</a> 
-S. Calzavara, M. Conti, R. Focardi, A. Rabitti and G. Tolomei, "Mitch: A Machine Learning Approach to the Black-Box Detection of CSRF Vulnerabilities," 2019 IEEE European Symposium on Security and Privacy (EuroS&P), 2019, pp. 528-543, doi: 10.1109/EuroSP.2019.00045.
