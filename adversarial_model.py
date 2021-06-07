@@ -49,16 +49,7 @@ def simple_robust_model(simpleModel):
     print("Accuracy on benign test examples: {}%".format(accuracy * 100))
 
     # save the model
-    # classifier.save("adversial_rf_model_9145", "./")
-
-
-"""create an adversarial model with the use of art( adversarial robustness toolkit) 
-    this model would be robust against the evasion attacks"""
-if __name__=="__main__":
-    model = load_or_create_model()
-
-    simple_robust_model(model)
-
+    classifier.save("robust_model.pkl", "./")
 
 def generate_attack_vector():
     # create an attack
@@ -105,6 +96,17 @@ def generate_attack_vector():
     # Out[33]: (632,)
     end_time = time.time()
     print("time of random forest : ", end_time-start_time)
+
+
+"""create an adversarial model with the use of art( adversarial robustness toolkit) 
+    this model would be robust against the evasion attacks"""
+if __name__=="__main__":
+    model = load_or_create_model()
+    simple_robust_model(model)
+
+    print("if you want to generate the attack vector and test the model enter yes ...")
+    if input()=="yes":
+        generate_attack_vector()
 
 
 def model_to_js():
