@@ -254,9 +254,9 @@ class Py_Mitch:
         print("making conclusion")
         candidates, resulting_candidates = guessCSRFs(self.sensitive_requests, self.alice1_requests, self.bob_requests, self.unauth_requests)
         print("search for possible CSRFs finished, please expand the array presented here to see candidates:")
-        print(candidates)
+        #print(candidates)
         print("resulting candidates are :")
-        print(resulting_candidates)
+        #print(resulting_candidates)
         # results_url = tellCSRFs(self.sensitive_requests, self.alice1_requests, self.bob_requests, self.unauth_requests)
 
     def log(self):
@@ -345,7 +345,7 @@ if __name__ == "__main__":
     mitch.logged_in_Alice2()
     mitch.logged_out_Alice2()
 
-    print(mitch.collected_total_request, "    ", mitch.collected_sensitive_requests)
+    #print(mitch.collected_total_request, "    ", mitch.collected_sensitive_requests)
     mitch.make_conclusion()
     # print("mitch main sensitive requests: ", mitch.main_sensitive_req)
     print("a complete log is in : ")
