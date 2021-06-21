@@ -9,10 +9,14 @@ from guess_csrfs import *
 
 
 class Py_Mitch:
-
+    """This class contain the main program
+        inputs:
+            browser_is : introduce the type of the browser to be used by Mitch
+            url : this is the url of the login page
+            domain : domain of the web page
+    """
     def __init__(self, browser_is="chrome", url="https://darmankade.com", domain="darmankade.com"):
         self.log_sensitivity = {}
-
         self.phase = 0
         if browser_is == "chrome":
             self.driver = webdriver.Chrome()
@@ -20,16 +24,12 @@ class Py_Mitch:
             self.driver = webdriver.Firefox()
         else:
             self.driver = webdriver.Safari()
-
         self.main_domain = domain
         self.driver.get(url)
-
-        # self.requested_url = url
         self.lock = multiprocessing.Lock()
 
         # urls that mitch search for vulnerabilities in them
         self.search_urls = []
-
         self.active_collector = []
         self.alice1_requests = []
         self.sensitive_requests = []
@@ -40,8 +40,6 @@ class Py_Mitch:
         self.unauth_requests = []
         self.collected_sensitive_requests = 0
         self.collected_total_request = 0
-
-        # self.classifier = js2py.eval_js(javascriptcode)
         self.classifier = load_or_create_model()
 
     def goodUrl(self, current_url, domain):

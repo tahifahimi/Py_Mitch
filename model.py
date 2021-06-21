@@ -1,7 +1,7 @@
 import csv
 import numpy as np
+import joblib
 from sklearn.ensemble import RandomForestClassifier
-import pickle
 from sklearn_porter import Porter
 
 def reading_data(filename):
@@ -41,13 +41,14 @@ def create_model():
     model.fit(x, y)
     return model
 
-import joblib
-
 def load_or_create_model():
     # check the exisitng of the model in the direstory or create that
-    # return create_model()
-    # return pickle.load(open('model/created_model.pkl', 'rb'))
-    return joblib.load('estimator.pkl')
+    model = None
+    model = joblib.load('estimator.pkl')
+    if model is not None:
+        return model
+    else:
+        return create_model()
 
 def port_to_js(model, filename):
     porter = Porter(model, language='js')
@@ -55,19 +56,3 @@ def port_to_js(model, filename):
     file = open(filename, "w")
     file.write(output)
     file.close()
-
-# import pickle
-# import joblib
-# if __name__ == "__main__":
-#     # model = create_model()
-#     # joblib.dump(model, 'estimator.pkl', compress=0)
-#     model = joblib.load('estimator.pkl')
-#     porter = Porter(model, language='js')
-#     output = porter.export(embed_data=True)
-#     file = open('estimator.js', "w")
-#     file.write(output)
-#     file.close()
-#     # pickle.dump(model, open("model/created_model", 'wb'))
-#
-#     # port_to_js(model, "model/created_model.js")
-#

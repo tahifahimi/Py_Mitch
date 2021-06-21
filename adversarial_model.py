@@ -1,5 +1,4 @@
 import csv
-import pickle
 import numpy as np
 from sklearn.model_selection import train_test_split
 import time
@@ -44,7 +43,7 @@ def encode_to_one_hot(arr):
     print(onehot_encoded)
     # invert first example
     inverted = label_encoder.inverse_transform([argmax(onehot_encoded[0, :])])
-    print(inverted)
+    # print(inverted)
     return onehot_encoded
 
 # using ch2 to extract 45 features
@@ -87,7 +86,7 @@ for i in range(len(removing)):
 """error ---> we should use 10 fold nested cross validation with 10 percentage for test-----------------------------------------------------
 https://machinelearningmastery.com/nested-cross-validation-for-machine-learning-with-python/
 """
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.1)
+x_train, x_test, y_train, y_test = train_test_split(x_temp, y_temp, test_size=0.1)
 # y_train = y_train.reshape((-1, 1))
 # y_test = y_test.reshape((-1, 1))
 
@@ -121,7 +120,7 @@ predictions = classifier.predict(x_test)
 
 test_encoded = encode_to_one_hot(y_test)
 accuracy = np.sum(np.argmax(predictions, axis=1) == np.argmax(test_encoded, axis=1)) / len(y_test)
-print("Accuracy on benign test examples: {}%".format(accuracy * 100))
+print("Accuracy on benign test examples for robust model : {}%".format(accuracy * 100))
 
 #save the model
 classifier.save("adversial_rf_model_9145", "./")
@@ -157,11 +156,6 @@ for i in range(len(simple_predict)):
     if simple_predict[i] == y_test[i]:
         f += 1
 
-
-# use another attack model
-# from art.attacks.evasion import DecisionTreeAttack
-# tree_attacker = DecisionTreeAttack(classifier)
-# tree_attack_sample = tree_attacker.generate(x_test, test_encoded)
 
 """output....: """
 # t
