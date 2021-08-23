@@ -171,13 +171,15 @@ class Py_Mitch:
                 self.collected_total_request += 1
         del self.driver.requests
 
-    # we need to pass all subdomains..............................................
     def call_url(self, request_urls, arr):
         import time
         for url in request_urls:
-            self.driver.get(url)
-            time.sleep(10)
-            self.on_requests(arr)
+            try:
+                self.driver.get(url)
+                time.sleep(15)
+                self.on_requests(arr)
+            except:
+                print("error in link : ", url)
 
     def logged_in_Alice(self):
         self.lock.acquire()
@@ -209,8 +211,6 @@ class Py_Mitch:
         self.lock.acquire()
         print("Logged in as Bob, testing sensitive requests...")
         del self.driver.requests
-        # self.active_collector = self.bob_requests
-        # self.replayRequests(self.bob_requests)
         self.call_url(self.search_urls, self.bob_requests)
         print("bob requests are: ", self.bob_requests)
         print("...please logout from Bob's account and notify the extension")
@@ -258,9 +258,12 @@ class Py_Mitch:
         # results_url = tellCSRFs(self.sensitive_requests, self.alice1_requests, self.bob_requests, self.unauth_requests)
 
     def log(self):
-        print("collected sensitive url ", self.collected_sensitive_requests)
-        print("collected total requests", self.collected_total_request)
-        print("size of the arrays: alice1, bob, alice2, unauth")
+        print("collected sensitive url :")
+        for cs in self.sensitive_requests:
+            print(cs['url'])
+
+        print("size of the arrays: ")
+        print("alice1, bob, alice2, unauth")
         print(len(self.sensitive_requests), "    ", len(self.bob_requests), "     ", len(self.alice1_requests),
               "           ", len(self.unauth_requests))
 
@@ -323,18 +326,21 @@ class Py_Mitch:
 """you can use the selenium requests instead of working with requests"""
 
 if __name__ == "__main__":
-    login_url = input("enter the login page of the website:")
-    domain = login_url.replace("https://", "")
-    domain = domain.replace("/login", "")
+    file = open('test/test.txt')
+    domain = file.readline().replace('\n', '').split(' ')[1]
+    login_url = file.readline().replace('\n', '').split(' ')[1]
 
     mitch = Py_Mitch("firefox", login_url, domain)
-    n = int(input("enter numbers of urls you wants to search in : "))
-    for i in range(n):
-        mitch.search_urls.append(input())
+    # mitch = Py_Mitch("chrome", login_url, domain)
+
+    mitch.search_urls = file.read().split('\n')
+    # mitch.search_urls = ["http://appeto.ir/platform#/media", "http://appeto.ir/platform#/account"]
     print("mitch created")
 
-    print("if you logged in print enter: ")
-    input()
+    while True:
+        if login_url not in mitch.driver.current_url:
+            break
+
     mitch.logged_in_Alice()
     mitch.finished_Alice1()
     mitch.logged_out_Alice1()

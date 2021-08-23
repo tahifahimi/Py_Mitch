@@ -1,6 +1,5 @@
 import json
 import datetime
-
 from json_schema_infer import *
 
 
@@ -168,9 +167,10 @@ def findRequest(needle, haystack):
     for r in haystack:
         if isSameEndPoint(needle, r):
             return r
-
+    temp = {}
     # print("!!!!no matching endpoint found for ", needle['url'])
-    return False
+    temp['overall'] = "different"
+    return temp
 
 def guessCSRFs(alice, alice1, bob, unauth):
     print("comparing traces...")
@@ -182,7 +182,7 @@ def guessCSRFs(alice, alice1, bob, unauth):
     print("confirming sensitivity ... ")
 
     for r in alice_vs_unauth:
-        print("checking ... ", r['url'])
+        # print("checking ... ", r['url'])
         if r['overall'] == 'different':
             print("candidate added")
             candidates.append(r)
@@ -194,8 +194,9 @@ def guessCSRFs(alice, alice1, bob, unauth):
         r_avb = findRequest(c, alice_vs_bob)
         r_ava1 = findRequest(c, alice_vs_alice1)
 
-        if r_avb['overall'] == ' different' and r_ava1['overall'] == 'different':
+        if r_avb['overall'] == 'different' and r_ava1['overall'] == 'different':
             continue
+
         resulting_candidates.append(c)
     
     return candidates, resulting_candidates

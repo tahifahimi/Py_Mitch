@@ -171,7 +171,7 @@ print("time of random forest : ", end_time-start_time)
 
 # load the model again
 import pickle
-loaded_model = pickle.load(open("adversial_rf_model_9145.pickle", 'rb'))
+loaded_model = pickle.load(open("model/adversial_rf_model_9145.pickle", 'rb'))
 
 from sklearn_porter import Porter
 porter = Porter(loaded_model, language='js')
