@@ -20,3 +20,12 @@ python background.py
 
 ## Model 
 the model is available (estimator.pkl) but if you want to create new Model, you might use the dataset from the article[[1]](#1).
+
+## simple summary of the Article
+
+|               | reaons        |
+| ------------- |:-------------:|
+| using 2 accounts| to simulate forging a request into another session ... for example Alice forge request into Bob session |
+| using unauthenticate session      | to make sure every request needs the authentication( because CSRF is only appliable into requests that needs authentication |
+| using Alice2 session | to be sure that there is no entry in the requests that can be depend on the time or anti-csrf tokens |
+
